@@ -1,5 +1,6 @@
 #ifndef MODELO_H
 #define MODELO_H
+
 #include <string>
 #include <iostream>
 #include <list>
@@ -8,12 +9,19 @@
 
 using namespace std;
 
-class Modelo{
+class Modelo {
 private:
     list<Sistema> sistemas;
     list<Fluxo> fluxos;
-public:
 
+public:
+    // Construtor parametrizado
+    Modelo(const list<Sistema>& sist, const list<Fluxo>& flux);
+
+    // Construtor de cópia
+    Modelo(const Modelo& mod);
+
+    // Métodos
     void adicionarSistema(const Sistema& sistema);  
 
     void removerSistema(const Sistema& sistema); 
@@ -21,7 +29,8 @@ public:
     void adicionarFluxo(const Fluxo& fluxo); 
 
     void removerFluxo(const Fluxo& fluxo); 
+    
+    void execModelo();
 };
-
 
 #endif
