@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <list>
+#include <algorithm> 
 #include "Sistema.h"
 #include "Fluxo.h"
 
@@ -38,6 +39,9 @@ public:
     int getoperacao();
 
     void execModelo();
+
+    void imprimiSistemas();
+    
 };
 
 #endif

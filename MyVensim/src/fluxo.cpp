@@ -1,6 +1,6 @@
 #include "Fluxo.h"
 
-Fluxo::Fluxo(string name, Sistema org, Sistema dest, double v){
+Fluxo::Fluxo(string name, string org, string dest, double v){
     nome = name;
     origem = org;
     destino = dest;
@@ -21,20 +21,20 @@ bool Fluxo::operator==(const Fluxo& other) const{
 }
 
 
-void Fluxo::setOrg(Sistema org){
+void Fluxo::setOrg(string org){
     origem = org;
 
 }
 
-void Fluxo::setDest(Sistema dest){
+void Fluxo::setDest(string dest){
     destino = dest;
 }
 
-Sistema Fluxo::getOrg(){
+string Fluxo::getOrg(){
     return origem;
 }
 
-Sistema Fluxo::getDest(){
+string Fluxo::getDest(){
     return destino;
 }
 
@@ -46,19 +46,19 @@ double Fluxo::getValor(){
     return valor;
 };
 
-void Fluxo::fluxoExponencial(){
-    valor = origem.getValor() * 0.01;
-    cout << "valor:" << valor << "\n";
-    origem.setValor(origem.getValor() - valor);
-    destino.setValor(destino.getValor() + valor);   
+void Fluxo::fluxoExponencial(Sistema& org, Sistema& dest){
+    valor = org.getValor() * 0.01;  // Calcula o valor do fluxo
+    //cout << "valor: " << valor << "\n";
+    org.setValor(org.getValor() - valor);  // Diminui o valor de org
+    dest.setValor(dest.getValor() + valor); // Aumenta o valor de dest
 }
 
-void Fluxo::fluxoLogistic(){
-    valor = 0.01 * destino.getValor() * (1 - destino.getValor() / 70);
-    cout << "valor:" << valor << "\n";
-    origem.setValor(origem.getValor() - valor);
-    destino.setValor(destino.getValor() + valor); 
-};
+void Fluxo::fluxoLogistic(Sistema& org, Sistema& dest){
+    valor = 0.01 * dest.getValor() * (1 - dest.getValor() / 70);  // Calcula o valor do fluxo logístico
+    //cout << "valor: " << valor << "\n";
+    org.setValor(org.getValor() - valor);  // Diminui o valor de origem
+    dest.setValor(dest.getValor() + valor); // Aumenta o valor de destino
+}
 
 void Fluxo::setNome(string name){
     nome = name;

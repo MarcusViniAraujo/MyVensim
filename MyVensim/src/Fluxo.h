@@ -10,12 +10,12 @@ using namespace std;
 class Fluxo{
 private:
     string nome;
-    Sistema origem;
-    Sistema destino;
+    string origem;
+    string destino;
     double valor;
     
 public:
-    Fluxo(string name = "", Sistema org = Sistema(), Sistema dest = Sistema(), double v = 0);
+    Fluxo(string name = "", string org = "", string dest = "", double v = 0);
 
     Fluxo(const Fluxo& aux);
 
@@ -23,21 +23,21 @@ public:
 
     bool operator==(const Fluxo& other) const;
 
-    void setOrg(Sistema org);
+    void setOrg(string org);
 
-    void setDest(Sistema dest);
+    void setDest(string dest);
 
-    Sistema getOrg();
+    string getOrg();
 
-    Sistema getDest();
+    string getDest();
 
     void setValor(double v);
 
     double getValor();
 
-    void fluxoExponencial();
+    void fluxoExponencial(Sistema& org, Sistema& dest);
 
-    void fluxoLogistic();
+    void fluxoLogistic(Sistema& org, Sistema& dest);
 
     void setNome(string name);
 
