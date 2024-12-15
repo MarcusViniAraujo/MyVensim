@@ -1,12 +1,14 @@
 #include "Fluxo.h"
 
-Fluxo::Fluxo(Sistema org = Sistema(), Sistema dest = Sistema(), double v = 0){
+Fluxo::Fluxo(string name = "", Sistema org = Sistema(), Sistema dest = Sistema(), double v = 0){
+    nome = name;
     origem = org;
     destino = dest;
     valor = v;
 }
 
 Fluxo::Fluxo(const Fluxo& aux){
+    nome = aux.nome;
     origem = aux.origem;
     destino = aux.destino;
     valor = aux.valor;
@@ -50,4 +52,12 @@ void Fluxo::fluxoLogistic(){
     origem.setValor(origem.getValor() - valor);
     destino.setValor(destino.getValor() + valor); 
 };
+
+void Fluxo::setNome(string name){
+    nome = name;
+}
+
+string Fluxo::getNome(){
+    return nome;
+}
 

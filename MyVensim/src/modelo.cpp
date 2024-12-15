@@ -49,6 +49,8 @@ void Modelo::execModelo(){
             for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
                 Fluxo aux  = *it;
                 aux.fluxoExponencial();
+                cout << ("Fluxo: %s\tvalor %s: %lf\tvalor %s: %lf", aux.getNome(), aux.getOrg().getNome(), aux.getOrg().getValor(), aux.getDest().getNome(), aux.getDest().getValor());
+
             }
         }
     }
@@ -57,6 +59,7 @@ void Modelo::execModelo(){
             for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
                 Fluxo aux  = *it;
                 aux.fluxoLogistic();
+                cout << ("Fluxo: %s\tvalor %s: %lf\tvalor %s: %lf", aux.getNome(), aux.getOrg().getNome(), aux.getOrg().getValor(), aux.getDest().getNome(), aux.getDest().getValor());
             }
         }
     }

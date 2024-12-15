@@ -9,12 +9,13 @@ using namespace std;
 
 class Fluxo{
 private:
+    string nome;
     Sistema origem;
     Sistema destino;
     double valor;
     
 public:
-    Fluxo(Sistema org = Sistema(), Sistema dest = Sistema(), double v = 0);
+    Fluxo(string name = "", Sistema org = Sistema(), Sistema dest = Sistema(), double v = 0);
 
     Fluxo(const Fluxo& aux);
 
@@ -36,7 +37,9 @@ public:
 
     void fluxoLogistic();
 
+    void setNome(string name);
 
+    string getNome();
 
     
 
