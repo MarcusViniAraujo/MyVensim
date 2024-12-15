@@ -11,9 +11,10 @@ class Fluxo{
 private:
     Sistema origem;
     Sistema destino;
-
+    double valor;
+    
 public:
-    Fluxo(Sistema org = Sistema(), Sistema dest = Sistema());
+    Fluxo(Sistema org = Sistema(), Sistema dest = Sistema(), double v = 0);
 
     Fluxo(const Fluxo& aux);
 
@@ -26,6 +27,18 @@ public:
     Sistema getOrg();
 
     Sistema getDest();
+
+    void setValor(double v);
+
+    double getValor();
+
+    void fluxoExponencial();
+
+    void fluxoLogistic();
+
+
+
+    
 
 };
 

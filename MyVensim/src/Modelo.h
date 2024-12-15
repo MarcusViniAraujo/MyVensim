@@ -13,15 +13,18 @@ class Modelo {
 private:
     list<Sistema> sistemas;
     list<Fluxo> fluxos;
+    int operacao;
 
-public:
-    // Construtor parametrizado
-    Modelo(const list<Sistema>& sist, const list<Fluxo>& flux);
+public:    
 
-    // Construtor de cópia
+    Modelo();
+
+    Modelo(const list<Sistema>& sist, const list<Fluxo>& flux, int op = -1);
+
     Modelo(const Modelo& mod);
 
-    // Métodos
+    ~Modelo();
+
     void adicionarSistema(const Sistema& sistema);  
 
     void removerSistema(const Sistema& sistema); 
@@ -29,7 +32,11 @@ public:
     void adicionarFluxo(const Fluxo& fluxo); 
 
     void removerFluxo(const Fluxo& fluxo); 
-    
+
+    void setOperacao(int op);
+
+    int Modelo::getoperacao();
+
     void execModelo();
 };
 
