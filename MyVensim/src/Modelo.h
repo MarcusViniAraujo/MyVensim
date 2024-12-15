@@ -35,7 +35,7 @@ public:
 
     void setOperacao(int op);
 
-    int Modelo::getoperacao();
+    int getoperacao();
 
     void execModelo();
 };

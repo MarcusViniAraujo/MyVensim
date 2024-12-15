@@ -1,6 +1,6 @@
 #include "Fluxo.h"
 
-Fluxo::Fluxo(string name = "", Sistema org = Sistema(), Sistema dest = Sistema(), double v = 0){
+Fluxo::Fluxo(string name, Sistema org, Sistema dest, double v){
     nome = name;
     origem = org;
     destino = dest;
@@ -15,6 +15,11 @@ Fluxo::Fluxo(const Fluxo& aux){
 }
 
 Fluxo::~Fluxo(){};
+
+bool Fluxo::operator==(const Fluxo& other) const{
+    return nome == other.nome && origem == other.origem && destino == other.destino && valor == other.valor;
+}
+
 
 void Fluxo::setOrg(Sistema org){
     origem = org;

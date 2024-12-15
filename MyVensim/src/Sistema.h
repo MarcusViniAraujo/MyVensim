@@ -17,6 +17,8 @@ public:
 
     Sistema(const Sistema& aux);
 
+    bool operator==(const Sistema& other) const;
+
     ~Sistema();
 
     void setNome(string name);

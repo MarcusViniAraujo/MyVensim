@@ -21,6 +21,8 @@ public:
 
     ~Fluxo();
 
+    bool operator==(const Fluxo& other) const;
+
     void setOrg(Sistema org);
 
     void setDest(Sistema dest);

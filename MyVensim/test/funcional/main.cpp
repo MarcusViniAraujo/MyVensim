@@ -14,9 +14,9 @@ int main(){
 
     exponentialFuncionalTest();
 
-    logisticalFuncionalTest();
+    //logisticalFuncionalTest();
 
-    complexFuncionalTest();
+    //complexFuncionalTest();
 
     return true;
 

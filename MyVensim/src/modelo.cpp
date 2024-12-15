@@ -1,8 +1,8 @@
 #include "Modelo.h"
 
-Modelo:: Modelo() {};
+Modelo::Modelo() {};
 
-Modelo::Modelo(const list<Sistema>& sist , const list<Fluxo>& flux, int op = -1){
+Modelo::Modelo(const list<Sistema>& sist , const list<Fluxo>& flux, int op){
     sistemas = sist;
     fluxos = flux;
     operacao = op;
@@ -44,22 +44,27 @@ int Modelo::getoperacao(){
 
 
 void Modelo::execModelo(){
-    if(!operacao){
+    if(operacao == 0){
         for(int i = 0; i < 100; i++){
             for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
                 Fluxo aux  = *it;
                 aux.fluxoExponencial();
-                cout << ("Fluxo: %s\tvalor %s: %lf\tvalor %s: %lf", aux.getNome(), aux.getOrg().getNome(), aux.getOrg().getValor(), aux.getDest().getNome(), aux.getDest().getValor());
-
+                cout << "Fluxo: " << aux.getNome() 
+                    << "\tvalor " << aux.getOrg().getNome() << ": " << aux.getOrg().getValor()
+                    << "\tvalor " << aux.getDest().getNome() << ": " << aux.getDest().getValor() 
+                    << endl;
             }
         }
     }
-    else if(operacao){
+    else if(operacao == 1){
         for(int i = 0; i < 100; i++){
             for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
                 Fluxo aux  = *it;
                 aux.fluxoLogistic();
-                cout << ("Fluxo: %s\tvalor %s: %lf\tvalor %s: %lf", aux.getNome(), aux.getOrg().getNome(), aux.getOrg().getValor(), aux.getDest().getNome(), aux.getDest().getValor());
+                cout << "Fluxo: " << aux.getNome() 
+                    << "\tvalor " << aux.getOrg().getNome() << ": " << aux.getOrg().getValor()
+                    << "\tvalor " << aux.getDest().getNome() << ": " << aux.getDest().getValor() 
+                    << endl;
             }
         }
     }
