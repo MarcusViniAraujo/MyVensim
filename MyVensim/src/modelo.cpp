@@ -45,10 +45,11 @@ int Modelo::getoperacao(){
 
 void Modelo::execModelo(){
     if(operacao == 0){
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 1; i++){
             for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
                 Fluxo aux  = *it;
                 aux.fluxoExponencial();
+                *it = aux;
                 cout << "Fluxo: " << aux.getNome() 
                     << "\tvalor " << aux.getOrg().getNome() << ": " << aux.getOrg().getValor()
                     << "\tvalor " << aux.getDest().getNome() << ": " << aux.getDest().getValor() 
@@ -61,6 +62,7 @@ void Modelo::execModelo(){
             for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
                 Fluxo aux  = *it;
                 aux.fluxoLogistic();
+                *it = aux;
                 cout << "Fluxo: " << aux.getNome() 
                     << "\tvalor " << aux.getOrg().getNome() << ": " << aux.getOrg().getValor()
                     << "\tvalor " << aux.getDest().getNome() << ": " << aux.getDest().getValor() 

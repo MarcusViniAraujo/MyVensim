@@ -15,7 +15,7 @@ void exponentialFuncionalTest(){
 void logisticalFuncionalTest(){
     Sistema p1("p1", 100);
     Sistema p2("p2", 10);
-    Fluxo logistc("logistc", p1, p1, 0);
+    Fluxo logistc("logistc", p1, p2, 0);
     Modelo mod;
     mod.adicionarFluxo(logistc);
     mod.adicionarSistema(p1);

@@ -12,11 +12,11 @@
 
 int main(){
 
-    exponentialFuncionalTest();
+    //exponentialFuncionalTest();
 
     //logisticalFuncionalTest();
 
-    //complexFuncionalTest();
+    complexFuncionalTest();
 
     return true;
 

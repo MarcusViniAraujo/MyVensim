@@ -48,12 +48,14 @@ double Fluxo::getValor(){
 
 void Fluxo::fluxoExponencial(){
     valor = origem.getValor() * 0.01;
+    cout << "valor:" << valor << "\n";
     origem.setValor(origem.getValor() - valor);
     destino.setValor(destino.getValor() + valor);   
 }
 
 void Fluxo::fluxoLogistic(){
     valor = 0.01 * destino.getValor() * (1 - destino.getValor() / 70);
+    cout << "valor:" << valor << "\n";
     origem.setValor(origem.getValor() - valor);
     destino.setValor(destino.getValor() + valor); 
 };
