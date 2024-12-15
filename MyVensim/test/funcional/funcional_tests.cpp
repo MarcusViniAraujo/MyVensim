@@ -43,12 +43,12 @@ void complexFuncionalTest(){
     mod.adicionarSistema(q3);
     mod.adicionarSistema(q4);
     mod.adicionarSistema(q5);
-    mod.adicionarFluxo(f);
     mod.adicionarFluxo(g);
-    mod.adicionarFluxo(r);
-    mod.adicionarFluxo(t);
-    mod.adicionarFluxo(u);
     mod.adicionarFluxo(v);
+    mod.adicionarFluxo(f);
+    mod.adicionarFluxo(t);
+    mod.adicionarFluxo(r);
+    mod.adicionarFluxo(u);
     mod.setOperacao(0);
     mod.execModelo();
     mod.imprimiSistemas();
