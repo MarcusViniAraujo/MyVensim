@@ -9,7 +9,4 @@ bool teste1(int rep);
 
 bool teste1(int rep);
 
-
-
-
 #endif
