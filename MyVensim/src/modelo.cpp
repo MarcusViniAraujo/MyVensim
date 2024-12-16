@@ -8,11 +8,8 @@ Modelo::Modelo(const list<Sistema>& sist , const list<Fluxo>& flux, int op){
     operacao = op;
 };
 
-Modelo::Modelo(const Modelo& mod){
-    sistemas= mod.sistemas;
-    fluxos = mod.fluxos;
-    operacao = mod.operacao;
-};
+Modelo::Modelo(const Modelo& mod)
+    : sistemas(mod.sistemas), fluxos(mod.fluxos), operacao(mod.operacao) {}
 
 Modelo::~Modelo() {};
 
@@ -44,7 +41,7 @@ int Modelo::getoperacao(){
 
 
 void Modelo::execModelo(){
-    if(operacao == 0){
+    if(operacao == 0 || operacao == 1){
         for(int i = 0; i <= 100; i++){
             for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
                 Fluxo aux  = *it;
@@ -58,42 +55,17 @@ void Modelo::execModelo(){
                 list<Sistema>::iterator destino = std::find_if(sistemas.begin(), sistemas.end(), 
                     [nome](Sistema& s) { return s.getNome() == nome; });
 
-                aux.fluxoExponencial(*origem, *destino);
-
-                //Sistema org = *origem;
-                //Sistema dest = *destino;
+                if(operacao == 0){
+                    aux.fluxoExponencial(*origem, *destino);
+                }
+                else{
+                    aux.fluxoLogistic(*origem, *destino);
+                }
+               
                 *it = aux;
-                //cout << "Fluxo: " << aux.getNome() 
-                //    << "\tvalor " << org.getNome() << ": " << org.getValor()
-                //    << "\tvalor " << dest.getNome() << ": " << dest.getValor()
-                //    << endl;
+                
             }
             imprimiSistemas();
-        }
-    }
-    else if(operacao == 1){
-        for(int i = 0; i <= 100; i++){
-            for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
-                Fluxo aux  = *it;
-                string nome = aux.getOrg();
-                list<Sistema>::iterator origem = std::find_if(sistemas.begin(), sistemas.end(), 
-                [nome](Sistema& s) {
-                    return s.getNome() == nome;
-                });
-                nome = aux.getDest();
-                list<Sistema>::iterator destino = std::find_if(sistemas.begin(), sistemas.end(), 
-                [nome](Sistema& s) {
-                    return s.getNome() == nome;
-                });
-                aux.fluxoLogistic(*origem, *destino);
-                //Sistema org = *origem;
-                //Sistema dest = *destino;
-                *it = aux;
-                //cout << "Fluxo: " << aux.getNome() 
-                //    << "\tvalor " << org.getNome() << ": " << org.getValor()
-                //    << "\tvalor " << dest.getNome() << ": " << dest.getValor()
-                //    << endl;
-            }
         }
     }
     else{
@@ -103,7 +75,7 @@ void Modelo::execModelo(){
 };
 
 void Modelo::imprimiSistemas(){
-    cout << "\n\n";
+    cout << "\n";
     for(list<Sistema>::iterator it = sistemas.begin(); it != sistemas.end(); it++){
         Sistema aux = *it;
         cout << "sistema: " << aux.getNome() <<"  valor: " << aux.getValor() << "\n";

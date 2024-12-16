@@ -1,6 +1,7 @@
 #include "funcional_tests.h"
 
 void exponentialFuncionalTest(){
+    cout << "exponentialFuncionalTest\n";
     Sistema pop1("pop1", 100);
     Sistema pop2("pop2", 0);
     Fluxo exponecial("exponencial", "pop1", "pop2", 0);
@@ -10,9 +11,11 @@ void exponentialFuncionalTest(){
     mod.adicionarSistema(pop2);
     mod.setOperacao(0);
     mod.execModelo();
+    cout << "fim do teste 1\n";
 };
 
 void logisticalFuncionalTest(){
+    cout << "logisticalFuncionalTest\n";
     Sistema p1("p1", 100);
     Sistema p2("p2", 10);
     Fluxo logistc("logistc", "p1", "p2", 0);
@@ -22,10 +25,11 @@ void logisticalFuncionalTest(){
     mod.adicionarSistema(p2);
     mod.setOperacao(1);
     mod.execModelo();
-
+    cout << "fim do teste 2\n";
 };
 
 void complexFuncionalTest(){
+    cout << "\ncomplexFuncionalTest\n";
     Sistema q1("q1", 100);
     Sistema q2("q2", 0);
     Sistema q3("q3", 100);
@@ -43,13 +47,14 @@ void complexFuncionalTest(){
     mod.adicionarSistema(q3);
     mod.adicionarSistema(q4);
     mod.adicionarSistema(q5);
-    mod.adicionarFluxo(g);
-    mod.adicionarFluxo(v);
     mod.adicionarFluxo(f);
-    mod.adicionarFluxo(t);
+    mod.adicionarFluxo(g);
     mod.adicionarFluxo(r);
+    mod.adicionarFluxo(t);
     mod.adicionarFluxo(u);
+    mod.adicionarFluxo(v);
     mod.setOperacao(0);
     mod.execModelo();
     mod.imprimiSistemas();
+    cout << "fim do teste 3\n";
 };
