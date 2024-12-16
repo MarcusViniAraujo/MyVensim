@@ -42,7 +42,7 @@ int Modelo::getoperacao(){
 
 void Modelo::execModelo(){
     if(operacao == 0 || operacao == 1){
-        for(int i = 0; i <= 100; i++){
+        for(int i = 0; i < 100; i++){
             for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
                 Fluxo aux  = *it;
                 string nome = aux.getOrg();
