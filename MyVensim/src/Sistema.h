@@ -25,9 +25,9 @@ public:
 
     void setValor(double val);
 
-    string getNome();
+    string getNome() const;
 
-    double getValor();
+    double getValor() const;
 
 };
 

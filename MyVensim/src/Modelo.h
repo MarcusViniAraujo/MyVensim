@@ -7,41 +7,35 @@
 #include <algorithm> 
 #include "Sistema.h"
 #include "Fluxo.h"
+#include "FluxoExponencial.h"
+#include "FluxoLogistico.h"
 
 using namespace std;
 
 class Modelo {
 private:
-    list<Sistema> sistemas;
-    list<Fluxo> fluxos;
-    int operacao;
+    list<Sistema> sistemas;  // Lista de sistemas
+    list<Fluxo*> fluxos;     // Lista de ponteiros para Fluxo
 
-public:    
+public:
+    Modelo();                                 // Construtor padrão
 
-    Modelo();
+    Modelo(const list<Sistema>& sist, const list<Fluxo*>& flux); // Construtor parametrizado
 
-    Modelo(const list<Sistema>& sist, const list<Fluxo>& flux, int op = -1);
+    Modelo(const Modelo& mod);               // Construtor de cópia (cuidado com duplicação de ponteiros)
 
-    Modelo(const Modelo& mod);
+    ~Modelo();                                // Destrutor (libera memória dos fluxos)
 
-    ~Modelo();
+    void adicionar(const Sistema& sistema);  // Adicionar sistema
 
-    void adicionarSistema(const Sistema& sistema);  
+    void remover(const Sistema& sistema);    // Remover sistema
 
-    void removerSistema(const Sistema& sistema); 
+    void adicionar(Fluxo* fluxo);            // Adicionar fluxo
 
-    void adicionarFluxo(const Fluxo& fluxo); 
+    void remover(Fluxo* fluxo);              // Remover fluxo
 
-    void removerFluxo(const Fluxo& fluxo); 
-
-    void setOperacao(int op);
-
-    int getoperacao();
-
-    void execModelo();
+    void execModelo();                       // Executar modelo
 
     void imprimiSistemas();
-    
 };
-
 #endif

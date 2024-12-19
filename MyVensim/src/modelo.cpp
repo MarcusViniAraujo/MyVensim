@@ -1,78 +1,61 @@
 #include "Modelo.h"
 
-Modelo::Modelo() {};
 
-Modelo::Modelo(const list<Sistema>& sist , const list<Fluxo>& flux, int op){
+Modelo::Modelo() {}
+
+
+Modelo::Modelo(const list<Sistema>& sist, const list<Fluxo*>& flux) {
     sistemas = sist;
-    fluxos = flux;
-    operacao = op;
-};
-
-Modelo::Modelo(const Modelo& mod)
-    : sistemas(mod.sistemas), fluxos(mod.fluxos), operacao(mod.operacao) {}
-
-Modelo::~Modelo() {};
-
-
-void Modelo::adicionarSistema(const Sistema& sistema){
-    sistemas.push_back(sistema);
-
-};  
-
-void Modelo::removerSistema(const Sistema& sistema){
-    sistemas.remove(sistema);
-}; 
-
-void Modelo::adicionarFluxo(const Fluxo& fluxo){
-    fluxos.push_back(fluxo);
-}; 
-
-void Modelo::removerFluxo(const Fluxo& fluxo){
-    fluxos.remove(fluxo);
-}; 
-
-void Modelo::setOperacao(int op){
-    operacao = op;
-};
-
-int Modelo::getoperacao(){
-    return operacao;
+    fluxos = flux; 
 }
 
+Modelo::Modelo(const Modelo& mod)
+    : sistemas(mod.sistemas), fluxos(mod.fluxos) {
+}
 
-void Modelo::execModelo(){
-    if(operacao == 0 || operacao == 1){
-        for(int i = 0; i < 100; i++){
-            for(list<Fluxo>::iterator it = fluxos.begin(); it != fluxos.end(); ++it){
-                Fluxo aux  = *it;
-                string nome = aux.getOrg();
-
-                list<Sistema>::iterator origem = std::find_if(sistemas.begin(), sistemas.end(), 
-                    [nome](Sistema& s) { return s.getNome() == nome; });
-
-                nome = aux.getDest();
-
-                list<Sistema>::iterator destino = std::find_if(sistemas.begin(), sistemas.end(), 
-                    [nome](Sistema& s) { return s.getNome() == nome; });
-
-                if(operacao == 0){
-                    aux.fluxoExponencial(*origem, *destino);
-                }
-                else{
-                    aux.fluxoLogistic(*origem, *destino);
-                }
-               
-                *it = aux;
-                
-            }
-            imprimiSistemas();
+Modelo::~Modelo() {
+    if (!fluxos.empty()) {
+        for (auto fluxo : fluxos) {
+            delete fluxo;
         }
     }
-    else{
-        cout << "a operacao nao foi reconhecida";
+}
+
+void Modelo::adicionar(const Sistema& sistema) {
+    sistemas.push_back(sistema);
+}
+
+void Modelo::remover(const Sistema& sistema) {
+    sistemas.remove(sistema);
+}
+
+void Modelo::adicionar(Fluxo* fluxo) {
+    fluxos.push_back(fluxo);
+}
+
+void Modelo::remover(Fluxo* fluxo) {
+    fluxos.remove_if([fluxo](Fluxo* f) { return f == fluxo; });
+}
+
+void Modelo::execModelo() {
+    for (int i = 0; i < 100; i++) {
+        for (auto fluxo : fluxos) { 
+            string nomeOrigem = fluxo->getOrg();
+            string nomeDestino = fluxo->getDest();
+
+            auto origem = find_if(sistemas.begin(), sistemas.end(),
+                [&nomeOrigem](const Sistema& s) { return s.getNome() == nomeOrigem; });
+
+            auto destino = find_if(sistemas.begin(), sistemas.end(),
+                [&nomeDestino](const Sistema& s) { return s.getNome() == nomeDestino; });
+
+            if (origem != sistemas.end() && destino != sistemas.end()) {
+                fluxo->calcular(*origem, *destino); 
+            }
+        }
+        imprimiSistemas();
     }
-    
-};
+}
 
 void Modelo::imprimiSistemas(){
     cout << "\n";

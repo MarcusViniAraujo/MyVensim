@@ -22,10 +22,10 @@ void Sistema::setValor(double val){
     valor = val;
 }
 
-string Sistema::getNome(){
+string Sistema::getNome() const{
     return nome;
 }
 
-double Sistema::getValor(){
+double Sistema::getValor() const{
     return valor;
 }
