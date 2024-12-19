@@ -20,16 +20,14 @@ public:
 
     bool operator==(const Fluxo& other) const;
 
-    virtual void calcular(Sistema& org, Sistema& dest) = 0; // Método puro virtual
+    virtual void calcular(Sistema& org, Sistema& dest) = 0; 
 
     void setOrg(string org);
     void setDest(string dest);
     string getOrg();
     string getDest();
-
     void setValor(double v);
     double getValor();
-
     void setNome(string name);
     string getNome();
 };

@@ -14,27 +14,27 @@ using namespace std;
 
 class Modelo {
 private:
-    list<Sistema> sistemas;  // Lista de sistemas
-    list<Fluxo*> fluxos;     // Lista de ponteiros para Fluxo
+    list<Sistema> sistemas;  
+    list<Fluxo*> fluxos;     
 
 public:
-    Modelo();                                 // Construtor padrão
+    Modelo();                                 
 
-    Modelo(const list<Sistema>& sist, const list<Fluxo*>& flux); // Construtor parametrizado
+    Modelo(const list<Sistema>& sist, const list<Fluxo*>& flux); 
 
-    Modelo(const Modelo& mod);               // Construtor de cópia (cuidado com duplicação de ponteiros)
+    Modelo(const Modelo& mod);               
 
-    ~Modelo();                                // Destrutor (libera memória dos fluxos)
+    ~Modelo();                                
 
-    void adicionar(const Sistema& sistema);  // Adicionar sistema
+    void adicionar(const Sistema& sistema); 
 
-    void remover(const Sistema& sistema);    // Remover sistema
+    void remover(const Sistema& sistema);   
 
-    void adicionar(Fluxo* fluxo);            // Adicionar fluxo
+    void adicionar(Fluxo* fluxo);           
 
-    void remover(Fluxo* fluxo);              // Remover fluxo
+    void remover(Fluxo* fluxo);              
 
-    void execModelo();                       // Executar modelo
+    void execModelo();                       
 
     void imprimiSistemas();
 };
