@@ -1,11 +1,11 @@
 #ifndef FUNCIONAL_TESTS_H
 #define FUNCIONAL_TESTS_H
 
-#include "../../src/Modelo.h"
+#include "../../src/Model.h"
 
 void exponentialFuncionalTest();
 
-void logisticalFuncionalTest();
+void logisticFuncionalTest();
 
 void complexFuncionalTest();
 

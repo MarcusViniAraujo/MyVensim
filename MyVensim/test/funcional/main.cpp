@@ -4,21 +4,21 @@
 
 #include "funcional_tests.h"
 
-#include "..\..\src\Modelo.h"
+#include "..\..\src\Model.h"
 
-#include "..\..\src\Sistema.h"
+#include "..\..\src\System.h"
 
-#include "..\..\src\Fluxo.h"
+#include "..\..\src\Flow.h"
 
 int main(){
 
     exponentialFuncionalTest();
 
-    logisticalFuncionalTest();
+    logisticFuncionalTest();
 
     complexFuncionalTest();
 
-    return true;
+    return 0;
 
 }
 #endif
