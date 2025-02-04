@@ -66,6 +66,16 @@ void Model::execute(double begin, double end, double increment)
     printSystems();
 }
 
+list<Flow *> Model::getFlows()
+{
+    return flows;
+}
+
+list<System *> Model::getSystems()
+{
+    return systems;
+}
+
 void Model::printSystems()
 {
     cout << "\n";

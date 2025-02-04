@@ -37,6 +37,10 @@ public:
 
     void execute(double begin, double end, double increment);
 
+    list<System *> getSystems();
+
+    list<Flow *> getFlows();
+
     void printSystems();
 };
 #endif
